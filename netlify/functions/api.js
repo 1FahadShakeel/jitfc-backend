@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const userRoutes = require('../../src/routes/userRoutes');
 const waitlistRoutes = require('../../src/routes/waitlistRoutes');
+const {router} = require("express/lib/application");
 
 const app = express();
 
@@ -33,15 +34,15 @@ async function connectToDatabase() {
 }
 
 // Middleware
-app.use(cors({
+router.use(cors({
     origin: process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
 }));
-app.use(express.json({ limit: '10mb' }));
+router.use(express.json({ limit: '10mb' }));
 
 // Basic security headers
-app.use((req, res, next) => {
+router.use((req, res, next) => {
     res.setHeader('X-Content-Type-Options', 'nosniff');
     res.setHeader('X-Frame-Options', 'DENY');
     res.setHeader('X-XSS-Protection', '1; mode=block');
@@ -55,7 +56,7 @@ app.use((req, res, next) => {
 });
 
 // Health check route
-app.get('/health', (req, res) => {
+router.get('/health', (req, res) => {
     res.json({
         status: 'healthy',
         timestamp: new Date().toISOString()
@@ -63,11 +64,11 @@ app.get('/health', (req, res) => {
 });
 
 // Routes
-app.use('/users', userRoutes);
-app.use('/waitlist', waitlistRoutes);
+router.use('/users', userRoutes);
+router.use('/waitlist', waitlistRoutes);
 
 // 404 handler
-app.use((req, res) => {
+router.use((req, res) => {
     res.status(404).json({
         status: 'error',
         message: 'Route not found'
@@ -75,7 +76,7 @@ app.use((req, res) => {
 });
 
 // Error handling middleware
-app.use((err, req, res, next) => {
+router.use((err, req, res, next) => {
     console.error('Error:', err);
 
     // Mongoose validation error
