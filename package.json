@@ -27,6 +27,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.0.0",
     "netlify-lambda": "^2.0.15",
+    "node-fetch": "^3.3.2",
     "nodemailer": "^6.9.16",
     "serverless-http": "^3.1.1",
     "supertest": "^7.0.0",
