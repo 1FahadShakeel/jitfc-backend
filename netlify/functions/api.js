@@ -1,4 +1,4 @@
-// functions/api.js
+
 const express = require('express');
 const serverless = require('serverless-http');
 const mongoose = require('mongoose');
