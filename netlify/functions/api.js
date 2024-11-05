@@ -2,7 +2,7 @@
 const express = require('express');
 const serverless = require('serverless-http');
 const mongoose = require('mongoose');
-const app = require('../src/app'); // Your existing Express app
+const app = require('../../src/app'); // Your existing Express app
 
 // Wrap your Express app
 const handler = serverless(app);

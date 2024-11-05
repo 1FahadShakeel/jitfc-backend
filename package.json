@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "build": "netlify-lambda build functions",
-    "start": "netlify-lambda serve functions",
+    "build": "netlify-lambda build netlify/functions",
+    "start": "netlify-lambda serve netlify/functions",
 
     "dev": "nodemon src/app.js",
     "test": "jest --detectOpenHandles",
