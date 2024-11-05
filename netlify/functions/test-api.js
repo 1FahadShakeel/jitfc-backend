@@ -1,7 +1,7 @@
 // test-api.js
 const axios = require('axios');
 
-const BASE_URL = 'https://jitfc-backend.netlify.app/.netlify/functions/api';
+const BASE_URL = 'https://jitfc-backend.netlify.app/';
 
 async function testEndpoints() {
     try {

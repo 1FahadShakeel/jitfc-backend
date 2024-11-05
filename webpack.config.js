@@ -5,7 +5,8 @@ module.exports = {
     target: 'node',
     mode: 'production',
     entry: {
-        api: './netlify/functions/api.js',
+        // api: './netlify/functions/api.js',
+        api: './src/functions/api.js',
     },
     output: {
         path: path.resolve(__dirname, 'functions-build'),
