@@ -1,0 +1,18 @@
+// netlify.toml
+[build]
+  command = "npm install && npm run build"
+  functions = "functions"
+  publish = "public"
+
+[functions]
+  external_node_modules = ["express"]
+  included_files = ["src/**/*.js"]
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+
+[dev]
+  functions = "functions"
+  publish = "public"
